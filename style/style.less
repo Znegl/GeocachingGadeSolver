@@ -48,6 +48,17 @@ output {
 	&:focus {
 		background: lighten(@form-input-background, 3);
 	}
+
+	&.small {
+		width: 6em;
+		min-width: 6em;
+		text-align: center;
+	}
+	&.xsmall {
+		width: 1.5em;
+		min-width: 1.5em;
+		text-align: center;
+	}
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -57,11 +68,52 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 output {
-	padding: .4em 1em .2em;
+	position: relative;
+	padding: .25em 1.5em .25em;
+	border-radius: 0;
+	min-height: 1.5em;
+	vertical-align: bottom;
+	text-align: center;
+	line-height: 1.5em;
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		display: inline-block;
+		border: 1em solid transparent;
+		height: 0;
+		width: 0;
+		content: "";
+	}
+
+	&:before {
+		left: 0;
+		border-right-width: 0;
+		border-left-color: #333;
+	}
+	&:after {
+		right: 0;
+		border-left-width: 0;
+		border-right-color: #333;
+	}
 }
 
 .table-scroller {
 	max-width: 100%;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+/**
+ * Specific elements
+ */
+section.coordinate-converter {
+	max-width: 14em;
+
+	p {
+		text-align: center;
+		margin-bottom: 1em;
+		line-height: 2.5em;
+	}
 }
