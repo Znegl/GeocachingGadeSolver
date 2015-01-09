@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="author" content="Thomas Grinderslev">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>@-ms-viewport{width: device-width !important}</style>
+
+	<title>Geocaching Gade Solver</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/text.css">
+
+	<script type="text/javascript" src="scripts/base.js" async></script>
+</head>
+<body>
+	<form>
+		<h1 id="app-title">Geocaching Gade Solver</h1>
+		<p>This webapp aims to help you solve Gade problems when geocaching.</p>
+		<noscript>
+			<p>Unfortunately nothing works when you have JavaScript turned off. Please enable JavaScript and reload the page.</p>
+		</noscript>
+
+		<p><label for="cipher-input">Input all given ciphers in whatever order you like.</label></p>
+		<p>
+			<input type="text" pattern="(\d|\.|\,|\ )*" id="cipher-input" placeholder="Eg. 123, 1984, 3.14" autofocus>
+		</p>
+
+		<h3>Sorted ciphers</h3>
+		<p>
+			<output id="cipher-output"></output>
+		</p>
+
+		<h3>Mapped ciphers</h3>
+		<div class="table-scroller">
+			<table class="inner-borders">
+				<thead id="alphabet-output-headers"></thead>
+				<tbody id="alphabet-output-cells"></tbody>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@import 'variables.less';
+
+/**
+ * Reset
+ */
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	font-size: 1em;
+	border: 0;
+	color: inherit;
+}
+
+/**
+ * Common style
+ */
+:focus {
+	outline: 0;
+	box-shadow: 0 0 .5em rgba(250, 250, 255, .5);
+}
+
+/**
+ * Common elements
+ */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input:not([type="submit"]),
+output {
+	display: inline-block;
+	background: @form-input-background;
+	border: none;
+	border-radius: 1em;
+	min-height: 1em;
+	padding: .5em 1em;
+	min-width: 7em;
+
+	&.validation-success {
+		background: @form-input-valid-background;
+	}
+	&.validation-error {
+		background: @form-input-invalid-background;
+	}
+
+	&:focus {
+		background: lighten(@form-input-background, 3);
+	}
+}
+
+output {
+	padding: .4em 1em .2em;
+}
+
+.table-scroller {
+	max-width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}

@@ -1,0 +1,58 @@
+/**
+ * Variables
+ */
+/**
+ * Reset
+ */
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1em;
+  border: 0;
+  color: inherit;
+}
+/**
+ * Common style
+ */
+:focus {
+  outline: 0;
+  box-shadow: 0 0 0.5em rgba(250, 250, 255, 0.5);
+}
+/**
+ * Common elements
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input:not([type="submit"]),
+output {
+  display: inline-block;
+  background: #4d4d4d;
+  border: none;
+  border-radius: 1em;
+  min-height: 1em;
+  padding: .5em 1em;
+  min-width: 7em;
+}
+input:not([type="submit"]).validation-success,
+output.validation-success {
+  background: #3d703d;
+}
+input:not([type="submit"]).validation-error,
+output.validation-error {
+  background: #823636;
+}
+input:not([type="submit"]):focus,
+output:focus {
+  background: #545454;
+}
+output {
+  padding: .4em 1em .2em;
+}
+.table-scroller {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

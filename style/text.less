@@ -1,0 +1,68 @@
+@import 'variables.less';
+
+/**
+ * Text style
+ */
+
+body {
+	font-family: sans-serif;
+	color: @text-color;
+	background: @background-color;
+	line-height: 1.5em;
+	padding: 1em 3em;
+
+	@media (max-width: 53em) {
+		padding: .5em 1em;
+	}
+}
+
+h1, h2, h3, h4, h5, p, ul, ol, table, dl {
+	margin: 1em 0 0;
+}
+h1, h2, h3, h4, h5 {
+	font-family: 'Gochi Hand', cursive;
+	font-weight: normal;
+	letter-spacing: .07em;
+}
+
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.7em;
+}
+h3 {
+	font-size: 1.4em;
+}
+h4 {
+	font-size: 1.2em;
+}
+
+p + p {
+	margin-top: .5em;
+}
+
+table {
+	td, th {
+		padding: .25em .5em;
+	}
+
+	&.inner-borders {
+		td, th {
+			border: 1px solid mix(@text-color, @background-color);
+
+			&:first-child {
+				border-left: 0;
+			}
+			&:last-child {
+				border-right: 0;
+			}
+		}
+		> thead th {
+			border-top: 0;
+		}
+		> tbody > tr:last-child > td {
+			border-bottom: 0;
+		}
+	}
+}
