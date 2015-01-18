@@ -26,7 +26,7 @@
 
 		<p><label for="cipher-input">Input all given ciphers in whatever order you like. Letters are converted to their position in the alphabet.</label></p>
 		<p>
-			<input type="text" pattern="(\d|\w|\.|\,|\ )*" id="cipher-input" placeholder="Eg. 1984, 3.14, hat" autofocus>
+			<input type="text" pattern="(\d|\w|\.|\,|\ )*" id="cipher-input" placeholder="Eg. 1984, 3.14, hat" spellcheck="false" autocomplete="off" autofocus>
 		</p>
 
 		<h3>Sorted ciphers</h3>
@@ -45,9 +45,9 @@
 		<h3>Coordinate converter</h3>
 		<section class="coordinate-converter">
 			<p>
-				N <input id="coordinate-n-1" value="ab" type="text" class="xsmall">° <input id="coordinate-n-2" type="text" value="cd.efg" class="small">
+				N <input id="coordinate-n-1" value="ab" type="text" class="xsmall" spellcheck="false" autocomplete="off">° <input id="coordinate-n-2" type="text" value="cd.efg" class="small" spellcheck="false" autocomplete="off">
 				<br>
-				E <input id="coordinate-e-1" value="ab" type="text" class="xsmall">° <input id="coordinate-e-2" type="text" value="cd.efg" class="small">
+				E <input id="coordinate-e-1" value="ab" type="text" class="xsmall" spellcheck="false" autocomplete="off">° <input id="coordinate-e-2" type="text" value="cd.efg" class="small" spellcheck="false" autocomplete="off">
 			</p>
 			<p>
 				<output id="coordinate-n-output"></output>
