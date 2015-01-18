@@ -14,6 +14,36 @@
 	var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å'];
 	var currentCiphers = allCiphers;
 
+	var localStorageSupported = !!window.localStorage;
+
+	/**
+	 * Returns the current array of ciphers.
+	 * @returns {Array.<string>}
+	 */
+	function getCipherArray() {
+		var ciphers = cipherInput.value.replace(/(\.|\,|\ )/g, '').split('');
+
+		// Convert to numbers
+		ciphers.forEach(function(cipher, index) {
+			ciphers[index] = parseInt(cipher, 10);
+		});
+
+		ciphers.sort(function(a, b) {
+			return a - b;
+		});
+
+		// Add missing ciphers
+		allCiphers.forEach(function(cipher) {
+			if (ciphers.indexOf(cipher) == -1) {
+				ciphers.push(cipher);
+			}
+		});
+
+		currentCiphers = ciphers;
+
+		return ciphers;
+	}
+
 	/**
 	 * Updates the cipher reference to match the current ciphers.
 	 * If null is given an error is displayed.
@@ -109,29 +139,20 @@
 			return;
 		}
 
+		// Save to local storage if supported
+		if (localStorageSupported) {
+			localStorage.setItem('raw-ciphers', cipherInput.value);
+			localStorage.setItem('coordinate-n-1', coordinateN1.value);
+			localStorage.setItem('coordinate-n-2', coordinateN2.value);
+			localStorage.setItem('coordinate-e-1', coordinateE1.value);
+			localStorage.setItem('coordinate-e-2', coordinateE2.value);
+		}
+
 		// Remove old validation error style
 		cipherOutput.classList.remove('validation-error');
 
 		// Extract ciphers
-		var ciphers = cipherInput.value.replace(/(\.|\,|\ )/g, '').split('');
-
-		// Convert to numbers
-		ciphers.forEach(function(cipher, index) {
-			ciphers[index] = parseInt(cipher, 10);
-		});
-
-		ciphers.sort(function(a, b) {
-			return a - b;
-		});
-
-		// Add missing ciphers
-		allCiphers.forEach(function(cipher) {
-			if (ciphers.indexOf(cipher) == -1) {
-				ciphers.push(cipher);
-			}
-		});
-
-		currentCiphers = ciphers;
+		var ciphers = getCipherArray();
 
 		// Print ciphers to the user
 		updateCipherReference(ciphers);
@@ -139,7 +160,20 @@
 		updateCoordinate();
 	});
 
-	updateCipherReference(allCiphers);
-	updateAlphabeticReference(allCiphers);
+	// Load saved data from local storage if supported
+	if (localStorageSupported) {
+		cipherInput.value = localStorage.getItem('raw-ciphers') || '';
+		coordinateN1.value = localStorage.getItem('coordinate-n-1') || '55';
+		coordinateN2.value = localStorage.getItem('coordinate-n-2') || '';
+		coordinateE1.value = localStorage.getItem('coordinate-e-1') || '012';
+		coordinateE2.value = localStorage.getItem('coordinate-e-2') || '';
+
+		var ciphers = getCipherArray();
+		updateCipherReference(ciphers);
+		updateAlphabeticReference(ciphers);
+	} else {
+		updateCipherReference(allCiphers);
+		updateAlphabeticReference(allCiphers);
+	}
 	updateCoordinate();
 })();
