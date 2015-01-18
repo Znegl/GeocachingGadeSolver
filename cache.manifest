@@ -1,0 +1,18 @@
+CACHE MANIFEST
+
+# Rev. 1
+
+# HTML
+index.html
+
+# JS
+scripts/base.js
+scripts/cache-control.js
+
+# Style
+style/style.css
+style/text.css
+
+# Web fonts
+http://fonts.googleapis.com/css?family=Gochi+Hand
+http://fonts.gstatic.com/s/gochihand/v7/ZZzTGmufF-Wq8IS3fkpBuwzyDMXhdD8sAj6OAJTFsBI.woff2
