@@ -21,7 +21,7 @@
 	 * @returns {Array.<string>}
 	 */
 	function getCipherArray() {
-		var ciphers = cipherInput.value.replace(/(\.|\,|\ )/g, '').split('');
+		var ciphers = cipherInput.value.toLowerCase().replace(/(\.|\,|\ )/g, '').split('');
 		var convertedCiphers = [];
 
 		// Convert to numbers
@@ -127,10 +127,10 @@
 	function updateCoordinate() {
 		// North
 		var nString = '';
-		var coordinateNArray = coordinateN1.value.split('');
+		var coordinateNArray = coordinateN1.value.toLowerCase().split('');
 		coordinateNArray.push('°');
 		coordinateNArray.push(' ');
-		coordinateNArray.push.apply(coordinateNArray, coordinateN2.value.split(''));
+		coordinateNArray.push.apply(coordinateNArray, coordinateN2.value.toLowerCase().split(''));
 		coordinateNArray.forEach(function(letter) {
 			nString += getCipherFromLetter(letter);
 		});
@@ -138,10 +138,10 @@
 
 		// East
 		var eString = '';
-		var coordinateEArray = coordinateE1.value.split('');
+		var coordinateEArray = coordinateE1.value.toLowerCase().split('');
 		coordinateEArray.push('°');
 		coordinateEArray.push(' ');
-		coordinateEArray.push.apply(coordinateEArray, coordinateE2.value.split(''));
+		coordinateEArray.push.apply(coordinateEArray, coordinateE2.value.toLowerCase().split(''));
 		coordinateEArray.forEach(function(letter) {
 			eString += getCipherFromLetter(letter);
 		});
