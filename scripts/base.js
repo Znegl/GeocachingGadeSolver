@@ -22,26 +22,43 @@
 	 */
 	function getCipherArray() {
 		var ciphers = cipherInput.value.replace(/(\.|\,|\ )/g, '').split('');
+		var convertedCiphers = [];
 
 		// Convert to numbers
 		ciphers.forEach(function(cipher, index) {
-			ciphers[index] = parseInt(cipher, 10);
+			if (cipher.match(/\d/)) {
+				// Convert cipher string to number
+				convertedCiphers.push(parseInt(cipher, 10));
+			} else {
+				// Convert letter to number
+				var number = alphabet.indexOf(cipher) + 1;
+				if (number < 10) {
+					// Everything is awesome
+					convertedCiphers.push(number);
+				} else {
+					// Add each cipher individually
+					(number + '').split('').forEach(function(cipher) {
+						// Convert cipher string to number
+						convertedCiphers.push(parseInt(cipher, 10));
+					});
+				}
+			}
 		});
 
-		ciphers.sort(function(a, b) {
+		convertedCiphers.sort(function(a, b) {
 			return a - b;
 		});
 
 		// Add missing ciphers
 		allCiphers.forEach(function(cipher) {
-			if (ciphers.indexOf(cipher) == -1) {
-				ciphers.push(cipher);
+			if (convertedCiphers.indexOf(cipher) == -1) {
+				convertedCiphers.push(cipher);
 			}
 		});
 
-		currentCiphers = ciphers;
+		currentCiphers = convertedCiphers;
 
-		return ciphers;
+		return convertedCiphers;
 	}
 
 	/**
