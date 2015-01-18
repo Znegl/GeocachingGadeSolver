@@ -25,7 +25,7 @@
 		var convertedCiphers = [];
 
 		// Convert to numbers
-		ciphers.forEach(function(cipher, index) {
+		ciphers.forEach(function(cipher) {
 			if (cipher.match(/\d/)) {
 				// Convert cipher string to number
 				convertedCiphers.push(parseInt(cipher, 10));
