@@ -16,7 +16,7 @@
 
 	var localStorageSupported = !!window.localStorage;
 
-	var mapEngine = /(iPhone|iPod|iPad).*AppleWebKit.*Safari/i.test(navigator.userAgent) && !navigator.userAgent.match('CriOS') ? 'apple' : 'google';
+	var mapEngine = (/(iPhone|iPod|iPad).*AppleWebKit.*Safari/i.test(navigator.userAgent) && !navigator.userAgent.match('CriOS')) ? 'apple' : 'google';
 
 	/**
 	 * Returns the current array of ciphers.
