@@ -8,13 +8,15 @@
 	var coordinateOutput = document.getElementById('coordinate-output');
 	var coordinateE1 = document.getElementById('coordinate-e-1');
 	var coordinateE2 = document.getElementById('coordinate-e-2');
-	var googleMapsLink = document.getElementById('googleMapsLink');
+	var mapLink = document.getElementById('mapLink');
 
 	var allCiphers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 	var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å'];
 	var currentCiphers = allCiphers;
 
 	var localStorageSupported = !!window.localStorage;
+
+	var mapEngine = /(iPhone|iPod|iPad).*AppleWebKit.*Safari/i.test(navigator.userAgent) && !navigator.userAgent.match('CriOS') ? 'apple' : 'google';
 
 	/**
 	 * Returns the current array of ciphers.
@@ -147,8 +149,24 @@
 
 		coordinateOutput.textContent = 'N ' + nString + ' ' + 'E ' + eString;
 
-		var googleMapsCoordinates = encodeURI(nString + ' ' + eString);
-		googleMapsLink.href = 'http://maps.google.com/maps?q=' + googleMapsCoordinates + '&ll=' + googleMapsCoordinates + '&z=17';
+		var mapCoordinates = encodeURI(nString + ' ' + eString);
+
+		if (mapEngine == 'apple') {
+			// Link to Apple Maps
+			mapLink.href = 'http://maps.apple.com/?q=' + mapCoordinates + '&ll=' + mapCoordinates + '&z=20';
+			mapLink.textContent = 'View on Apple Maps';
+			mapLink.removeAttribute('target');
+		} else {
+			// Link to Google Maps
+			if (navigator.userAgent.match('CriOS')) {
+				mapLink.href = 'comgooglemaps://?q=' + mapCoordinates + '&ll=' + mapCoordinates + '&z=20';
+			} else {
+				mapLink.href = 'http://maps.google.com/maps?q=' + mapCoordinates + '&ll=' + mapCoordinates + '&z=20';
+			}
+			mapLink.textContent = 'View on Google Maps';
+		}
+
+		mapLink.removeAttribute('hidden');
 	}
 
 	document.body.addEventListener('input', function() {
