@@ -5,10 +5,10 @@
 	var alphabetOutputCells = document.getElementById('alphabet-output-cells');
 	var coordinateN1 = document.getElementById('coordinate-n-1');
 	var coordinateN2 = document.getElementById('coordinate-n-2');
-	var coordinateNOutput = document.getElementById('coordinate-n-output');
+	var coordinateOutput = document.getElementById('coordinate-output');
 	var coordinateE1 = document.getElementById('coordinate-e-1');
 	var coordinateE2 = document.getElementById('coordinate-e-2');
-	var coordinateEOutput = document.getElementById('coordinate-e-output');
+	var googleMapsLink = document.getElementById('googleMapsLink');
 
 	var allCiphers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 	var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å'];
@@ -134,7 +134,6 @@
 		coordinateNArray.forEach(function(letter) {
 			nString += getCipherFromLetter(letter);
 		});
-		coordinateNOutput.textContent = 'N ' + nString;
 
 		// East
 		var eString = '';
@@ -145,7 +144,11 @@
 		coordinateEArray.forEach(function(letter) {
 			eString += getCipherFromLetter(letter);
 		});
-		coordinateEOutput.textContent = 'E ' + eString;
+
+		coordinateOutput.textContent = 'N ' + nString + ' ' + 'E ' + eString;
+
+		var googleMapsCoordinates = encodeURI(nString + ' ' + eString);
+		googleMapsLink.href = 'http://maps.google.com/maps?q=' + googleMapsCoordinates + '&ll=' + googleMapsCoordinates + '&z=17';
 	}
 
 	document.body.addEventListener('input', function() {
